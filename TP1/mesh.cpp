@@ -128,13 +128,22 @@ void Mesh::loadMeshFromFile(std::string fileName) {
         iLine++;
 
         m_data.clear();
-        std::vector<QVector4D> vertices;
 
         for( int v = 0 ; v < n_vertices ; ++v )
         {
             float x , y , z ;
             myfile >> x >> y >> z ;
-            vertices.push_back(QVector4D(x,y,z,1.0f));
+
+            // Positions
+            m_data.append(x);
+            m_data.append(y);
+            m_data.append(z);
+            m_data.append(1.0f);
+
+            // Normales (affectées de la position car la flemme de calculer les normales pour chaque sommet)
+            m_data.append(x);
+            m_data.append(y);
+            m_data.append(z);
             iLine++;
         }
 
@@ -155,11 +164,6 @@ void Mesh::loadMeshFromFile(std::string fileName) {
                 m_indexes.append(_v1);
                 m_indexes.append(_v2);
                 m_indexes.append(_v3);
-
-                float x, y, z;
-                myfile >> x >> y >> z;
-                normals.push_back(QVector3D(x,y,z));
-
             }
             else if (n_vertices_on_face == 4) {
                 unsigned int _v1, _v2, _v3, _v4;

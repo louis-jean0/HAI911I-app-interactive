@@ -191,8 +191,8 @@ void GLWidget::initializeGL()
     m_logoVbo.allocate(m_logo.constData(), m_logo.count() * sizeof(GLfloat));
 
     // Setup mesh
-    m_mesh.buildCube();
-    m_mesh.initializeBuffers(m_program);
+//    m_mesh.buildCube();
+//    m_mesh.initializeBuffers(m_program);
 
     // Store the vertex attribute bindings for the program.
     setupVertexAttribs();
