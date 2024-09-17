@@ -20,7 +20,7 @@ public:
     void buildCube();
     void loadMeshFromFile(std::string fileName);
     void initializeBuffers(QOpenGLShaderProgram* program);
-    void render(QOpenGLShaderProgram* program);
+    void render();
 
 private:
     QVector<GLfloat> m_data;

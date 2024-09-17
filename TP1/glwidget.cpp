@@ -191,15 +191,15 @@ void GLWidget::initializeGL()
     m_logoVbo.allocate(m_logo.constData(), m_logo.count() * sizeof(GLfloat));
 
     // Setup mesh
-//    m_mesh.buildCube();
-//    m_mesh.initializeBuffers(m_program);
+    m_mesh.buildCube();
+    m_mesh.initializeBuffers(m_program);
 
     // Store the vertex attribute bindings for the program.
     setupVertexAttribs();
 
     // Our camera never changes in this example.
     m_view.setToIdentity();
-    m_view.translate(0, 0, -5);
+    m_view.translate(0, 0, -3);
 
     // Light position is fixed.
     m_program->setUniformValue(m_light_pos_loc, QVector3D(0, 0, 70));
@@ -242,7 +242,7 @@ void GLWidget::paintGL()
     glDrawArrays(GL_TRIANGLES, 0, m_logo.vertexCount());
 
     // Draw mesh
-    m_mesh.render(m_program);
+    m_mesh.render();
 
     m_program->release();
 }
