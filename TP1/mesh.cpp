@@ -88,6 +88,12 @@ void Mesh::loadMeshFromFile(std::string fileName) {
             m_data.append(x);
             m_data.append(y);
             m_data.append(z);
+            m_data.append(1.0f);
+
+            m_data.append(0.0f);
+            m_data.append(0.0f);
+            m_data.append(1.0f);
+
             iLine++;
         }
 
@@ -118,7 +124,7 @@ void Mesh::loadMeshFromFile(std::string fileName) {
 }
 
 void Mesh::initializeBuffers(QOpenGLShaderProgram *program) {
-    m_vao.create();
+    if(!m_vao.isCreated()) m_vao.create();
     m_vao.bind();
 
     m_vertexBuffer.create();

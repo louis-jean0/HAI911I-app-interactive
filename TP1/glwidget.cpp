@@ -275,4 +275,5 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
 
 void GLWidget::loadMeshFromFile(QString fileName) {
     m_mesh.loadMeshFromFile(fileName.toStdString());
+    m_mesh.initializeBuffers(m_program);
 }
