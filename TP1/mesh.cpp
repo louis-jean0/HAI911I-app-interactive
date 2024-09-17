@@ -15,41 +15,90 @@ Mesh::~Mesh()
 }
 
 // Méthode pour construire un cube avec vertices et indices
-void Mesh::buildCube()
-{
-    // Définir les 8 sommets du cube (unité, centré à l'origine)
-    QVector<QVector3D> vertices = {
-        QVector3D(-0.5f, -0.5f, -0.5f), // 0
-        QVector3D( 0.5f, -0.5f, -0.5f), // 1
-        QVector3D( 0.5f,  0.5f, -0.5f), // 2
-        QVector3D(-0.5f,  0.5f, -0.5f), // 3
-        QVector3D(-0.5f, -0.5f,  0.5f), // 4
-        QVector3D( 0.5f, -0.5f,  0.5f), // 5
-        QVector3D( 0.5f,  0.5f,  0.5f), // 6
-        QVector3D(-0.5f,  0.5f,  0.5f)  // 7
+void Mesh::buildCube() {
+    // Clear previous data
+    m_data.clear();
+    m_indexes.clear();
+
+    // Define the normals for each face
+    QVector3D normals[] = {
+        QVector3D( 0.0f,  0.0f,  1.0f), // Front face
+        QVector3D( 0.0f,  0.0f, -1.0f), // Back face
+        QVector3D(-1.0f,  0.0f,  0.0f), // Left face
+        QVector3D( 1.0f,  0.0f,  0.0f), // Right face
+        QVector3D( 0.0f,  1.0f,  0.0f), // Top face
+        QVector3D( 0.0f, -1.0f,  0.0f)  // Bottom face
     };
 
-    // Ajouter les vertices au buffer
-    for (const QVector3D &v : vertices) {
-        m_data.append(v.x());
-        m_data.append(v.y());
-        m_data.append(v.z());
-        m_data.append(1.0f);
+    // Define the positions for each face (4 vertices per face)
+    QVector<QVector3D> positions[] = {
+        // Front face (z = 0.5f)
+        { QVector3D(-0.5f, -0.5f,  0.5f), // Bottom-left
+          QVector3D( 0.5f, -0.5f,  0.5f), // Bottom-right
+          QVector3D( 0.5f,  0.5f,  0.5f), // Top-right
+          QVector3D(-0.5f,  0.5f,  0.5f)  // Top-left
+        },
+        // Back face (z = -0.5f)
+        { QVector3D(-0.5f, -0.5f, -0.5f),
+          QVector3D(-0.5f,  0.5f, -0.5f),
+          QVector3D( 0.5f,  0.5f, -0.5f),
+          QVector3D( 0.5f, -0.5f, -0.5f)
+        },
+        // Left face (x = -0.5f)
+        { QVector3D(-0.5f, -0.5f, -0.5f),
+          QVector3D(-0.5f, -0.5f,  0.5f),
+          QVector3D(-0.5f,  0.5f,  0.5f),
+          QVector3D(-0.5f,  0.5f, -0.5f)
+        },
+        // Right face (x = 0.5f)
+        { QVector3D(0.5f, -0.5f, -0.5f),
+          QVector3D(0.5f,  0.5f, -0.5f),
+          QVector3D(0.5f,  0.5f,  0.5f),
+          QVector3D(0.5f, -0.5f,  0.5f)
+        },
+        // Top face (y = 0.5f)
+        { QVector3D(-0.5f, 0.5f, -0.5f),
+          QVector3D(-0.5f, 0.5f,  0.5f),
+          QVector3D( 0.5f, 0.5f,  0.5f),
+          QVector3D( 0.5f, 0.5f, -0.5f)
+        },
+        // Bottom face (y = -0.5f)
+        { QVector3D(-0.5f, -0.5f, -0.5f),
+          QVector3D( 0.5f, -0.5f, -0.5f),
+          QVector3D( 0.5f, -0.5f,  0.5f),
+          QVector3D(-0.5f, -0.5f,  0.5f)
+        }
+    };
 
-        m_data.append(0.0f);
-        m_data.append(0.0f);
-        m_data.append(1.0f);
+    // Build the vertex data and indices
+    for (int face = 0; face < 6; ++face) {
+        QVector3D normal = normals[face];
+        QVector<QVector3D> &facePositions = positions[face];
+
+        // Add vertices for the current face
+        for (const QVector3D &pos : facePositions) {
+            // Position
+            m_data.append(pos.x());
+            m_data.append(pos.y());
+            m_data.append(pos.z());
+            m_data.append(1.0f); // w component
+
+            // Normal
+            m_data.append(normal.x());
+            m_data.append(normal.y());
+            m_data.append(normal.z());
+        }
+
+        // Calculate indices for two triangles of the face
+        int startIndex = face * 4; // 4 vertices per face
+        m_indexes.append(startIndex);
+        m_indexes.append(startIndex + 1);
+        m_indexes.append(startIndex + 2);
+
+        m_indexes.append(startIndex);
+        m_indexes.append(startIndex + 2);
+        m_indexes.append(startIndex + 3);
     }
-
-    // Définir les 12 triangles (36 indices pour les triangles)
-    m_indexes = {
-        0, 1, 2, 2, 3, 0, // Face avant
-        4, 5, 6, 6, 7, 4, // Face arrière
-        0, 4, 7, 7, 3, 0, // Face gauche
-        1, 5, 6, 6, 2, 1, // Face droite
-        3, 2, 6, 6, 7, 3, // Face haut
-        0, 1, 5, 5, 4, 0  // Face bas
-    };
 }
 
 void Mesh::loadMeshFromFile(std::string fileName) {
@@ -79,25 +128,19 @@ void Mesh::loadMeshFromFile(std::string fileName) {
         iLine++;
 
         m_data.clear();
+        std::vector<QVector4D> vertices;
 
         for( int v = 0 ; v < n_vertices ; ++v )
         {
             float x , y , z ;
-
             myfile >> x >> y >> z ;
-            m_data.append(x);
-            m_data.append(y);
-            m_data.append(z);
-            m_data.append(1.0f);
-
-            m_data.append(0.0f);
-            m_data.append(0.0f);
-            m_data.append(1.0f);
-
+            vertices.push_back(QVector4D(x,y,z,1.0f));
             iLine++;
         }
 
         m_indexes.clear();
+
+        std::vector<QVector3D> normals;
 
         for( int f = 0 ; f < n_faces ; ++f )
         {
@@ -112,6 +155,22 @@ void Mesh::loadMeshFromFile(std::string fileName) {
                 m_indexes.append(_v1);
                 m_indexes.append(_v2);
                 m_indexes.append(_v3);
+
+                float x, y, z;
+                myfile >> x >> y >> z;
+                normals.push_back(QVector3D(x,y,z));
+
+            }
+            else if (n_vertices_on_face == 4) {
+                unsigned int _v1, _v2, _v3, _v4;
+                myfile >> _v1 >> _v2 >> _v3 >> _v4;
+
+                m_indexes.append(_v1);
+                m_indexes.append(_v2);
+                m_indexes.append(_v3);
+                m_indexes.append(_v1);
+                m_indexes.append(_v3);
+                m_indexes.append(_v4);
             }
             else
             {
