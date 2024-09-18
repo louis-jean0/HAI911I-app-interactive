@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = TP11.0.0
-DISTDIR = /home/e20190010736/HAI911I-app-interactive/TP1/obj/TP11.0.0
+DISTDIR = /home/louis/Documents/HAI911I-app-interactive/TP1/obj/TP11.0.0
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Core.so -lGL -lpthread   
@@ -392,19 +392,20 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc/moc_glwidget.cpp moc/moc_window.cpp moc/moc_mainwindow.cpp
 moc/moc_glwidget.cpp: glwidget.h \
 		logo.h \
+		mesh.h \
 		moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/e20190010736/HAI911I-app-interactive/TP1/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/e20190010736/HAI911I-app-interactive/TP1 -I/home/e20190010736/HAI911I-app-interactive/TP1 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include glwidget.h -o moc/moc_glwidget.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/louis/Documents/HAI911I-app-interactive/TP1/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/louis/Documents/HAI911I-app-interactive/TP1 -I/home/louis/Documents/HAI911I-app-interactive/TP1 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include glwidget.h -o moc/moc_glwidget.cpp
 
 moc/moc_window.cpp: window.h \
 		moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/e20190010736/HAI911I-app-interactive/TP1/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/e20190010736/HAI911I-app-interactive/TP1 -I/home/e20190010736/HAI911I-app-interactive/TP1 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include window.h -o moc/moc_window.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/louis/Documents/HAI911I-app-interactive/TP1/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/louis/Documents/HAI911I-app-interactive/TP1 -I/home/louis/Documents/HAI911I-app-interactive/TP1 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include window.h -o moc/moc_window.cpp
 
 moc/moc_mainwindow.cpp: mainwindow.h \
 		moc/moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/e20190010736/HAI911I-app-interactive/TP1/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/e20190010736/HAI911I-app-interactive/TP1 -I/home/e20190010736/HAI911I-app-interactive/TP1 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc/moc_mainwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/louis/Documents/HAI911I-app-interactive/TP1/moc/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/louis/Documents/HAI911I-app-interactive/TP1 -I/home/louis/Documents/HAI911I-app-interactive/TP1 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc/moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -423,11 +424,13 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 ####### Compile
 
 obj/glwidget.o: glwidget.cpp glwidget.h \
-		logo.h
+		logo.h \
+		mesh.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/glwidget.o glwidget.cpp
 
 obj/main.o: main.cpp glwidget.h \
 		logo.h \
+		mesh.h \
 		mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/main.o main.cpp
 
@@ -436,6 +439,7 @@ obj/mesh.o: mesh.cpp mesh.h
 
 obj/window.o: window.cpp glwidget.h \
 		logo.h \
+		mesh.h \
 		window.h \
 		mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/window.o window.cpp
