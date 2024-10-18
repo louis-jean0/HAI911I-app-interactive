@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -113,14 +111,6 @@ void draw () {
         skeleton.drawTransformedSkeleton( displayedBone , targetArticulation , skeletonTransfoIK );
     }
 }
-
-
-
-
-
-
-
-
 
 void display () {
     glLoadIdentity ();
@@ -274,13 +264,9 @@ void motion (int x, int y) {
     }
 }
 
-
 void reshape(int w, int h) {
     camera.resize (w, h);
 }
-
-
-
 
 int main (int argc, char ** argv) {
     if (argc > 2) {
