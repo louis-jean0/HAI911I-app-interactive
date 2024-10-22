@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/louis/Documents/HAI911I-app-interactive/TP3
+CMAKE_SOURCE_DIR = /home/louis/Documents/HAI911I-app-interactive/TP4
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/louis/Documents/HAI911I-app-interactive/TP3/build
+CMAKE_BINARY_DIR = /home/louis/Documents/HAI911I-app-interactive/TP4/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/tpArap.dir/depend.make
@@ -70,60 +70,60 @@ include CMakeFiles/tpArap.dir/progress.make
 include CMakeFiles/tpArap.dir/flags.make
 
 CMakeFiles/tpArap.dir/gmini.cpp.o: CMakeFiles/tpArap.dir/flags.make
-CMakeFiles/tpArap.dir/gmini.cpp.o: /home/louis/Documents/HAI911I-app-interactive/TP3/gmini.cpp
+CMakeFiles/tpArap.dir/gmini.cpp.o: /home/louis/Documents/HAI911I-app-interactive/TP4/gmini.cpp
 CMakeFiles/tpArap.dir/gmini.cpp.o: CMakeFiles/tpArap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/louis/Documents/HAI911I-app-interactive/TP3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tpArap.dir/gmini.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tpArap.dir/gmini.cpp.o -MF CMakeFiles/tpArap.dir/gmini.cpp.o.d -o CMakeFiles/tpArap.dir/gmini.cpp.o -c /home/louis/Documents/HAI911I-app-interactive/TP3/gmini.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/louis/Documents/HAI911I-app-interactive/TP4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tpArap.dir/gmini.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tpArap.dir/gmini.cpp.o -MF CMakeFiles/tpArap.dir/gmini.cpp.o.d -o CMakeFiles/tpArap.dir/gmini.cpp.o -c /home/louis/Documents/HAI911I-app-interactive/TP4/gmini.cpp
 
 CMakeFiles/tpArap.dir/gmini.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tpArap.dir/gmini.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Documents/HAI911I-app-interactive/TP3/gmini.cpp > CMakeFiles/tpArap.dir/gmini.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Documents/HAI911I-app-interactive/TP4/gmini.cpp > CMakeFiles/tpArap.dir/gmini.cpp.i
 
 CMakeFiles/tpArap.dir/gmini.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tpArap.dir/gmini.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Documents/HAI911I-app-interactive/TP3/gmini.cpp -o CMakeFiles/tpArap.dir/gmini.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Documents/HAI911I-app-interactive/TP4/gmini.cpp -o CMakeFiles/tpArap.dir/gmini.cpp.s
 
 CMakeFiles/tpArap.dir/src/Camera.cpp.o: CMakeFiles/tpArap.dir/flags.make
-CMakeFiles/tpArap.dir/src/Camera.cpp.o: /home/louis/Documents/HAI911I-app-interactive/TP3/src/Camera.cpp
+CMakeFiles/tpArap.dir/src/Camera.cpp.o: /home/louis/Documents/HAI911I-app-interactive/TP4/src/Camera.cpp
 CMakeFiles/tpArap.dir/src/Camera.cpp.o: CMakeFiles/tpArap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/louis/Documents/HAI911I-app-interactive/TP3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tpArap.dir/src/Camera.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tpArap.dir/src/Camera.cpp.o -MF CMakeFiles/tpArap.dir/src/Camera.cpp.o.d -o CMakeFiles/tpArap.dir/src/Camera.cpp.o -c /home/louis/Documents/HAI911I-app-interactive/TP3/src/Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/louis/Documents/HAI911I-app-interactive/TP4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tpArap.dir/src/Camera.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tpArap.dir/src/Camera.cpp.o -MF CMakeFiles/tpArap.dir/src/Camera.cpp.o.d -o CMakeFiles/tpArap.dir/src/Camera.cpp.o -c /home/louis/Documents/HAI911I-app-interactive/TP4/src/Camera.cpp
 
 CMakeFiles/tpArap.dir/src/Camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tpArap.dir/src/Camera.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Documents/HAI911I-app-interactive/TP3/src/Camera.cpp > CMakeFiles/tpArap.dir/src/Camera.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Documents/HAI911I-app-interactive/TP4/src/Camera.cpp > CMakeFiles/tpArap.dir/src/Camera.cpp.i
 
 CMakeFiles/tpArap.dir/src/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tpArap.dir/src/Camera.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Documents/HAI911I-app-interactive/TP3/src/Camera.cpp -o CMakeFiles/tpArap.dir/src/Camera.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Documents/HAI911I-app-interactive/TP4/src/Camera.cpp -o CMakeFiles/tpArap.dir/src/Camera.cpp.s
 
 CMakeFiles/tpArap.dir/src/Mesh.cpp.o: CMakeFiles/tpArap.dir/flags.make
-CMakeFiles/tpArap.dir/src/Mesh.cpp.o: /home/louis/Documents/HAI911I-app-interactive/TP3/src/Mesh.cpp
+CMakeFiles/tpArap.dir/src/Mesh.cpp.o: /home/louis/Documents/HAI911I-app-interactive/TP4/src/Mesh.cpp
 CMakeFiles/tpArap.dir/src/Mesh.cpp.o: CMakeFiles/tpArap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/louis/Documents/HAI911I-app-interactive/TP3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tpArap.dir/src/Mesh.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tpArap.dir/src/Mesh.cpp.o -MF CMakeFiles/tpArap.dir/src/Mesh.cpp.o.d -o CMakeFiles/tpArap.dir/src/Mesh.cpp.o -c /home/louis/Documents/HAI911I-app-interactive/TP3/src/Mesh.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/louis/Documents/HAI911I-app-interactive/TP4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tpArap.dir/src/Mesh.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tpArap.dir/src/Mesh.cpp.o -MF CMakeFiles/tpArap.dir/src/Mesh.cpp.o.d -o CMakeFiles/tpArap.dir/src/Mesh.cpp.o -c /home/louis/Documents/HAI911I-app-interactive/TP4/src/Mesh.cpp
 
 CMakeFiles/tpArap.dir/src/Mesh.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tpArap.dir/src/Mesh.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Documents/HAI911I-app-interactive/TP3/src/Mesh.cpp > CMakeFiles/tpArap.dir/src/Mesh.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Documents/HAI911I-app-interactive/TP4/src/Mesh.cpp > CMakeFiles/tpArap.dir/src/Mesh.cpp.i
 
 CMakeFiles/tpArap.dir/src/Mesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tpArap.dir/src/Mesh.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Documents/HAI911I-app-interactive/TP3/src/Mesh.cpp -o CMakeFiles/tpArap.dir/src/Mesh.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Documents/HAI911I-app-interactive/TP4/src/Mesh.cpp -o CMakeFiles/tpArap.dir/src/Mesh.cpp.s
 
 CMakeFiles/tpArap.dir/src/Trackball.cpp.o: CMakeFiles/tpArap.dir/flags.make
-CMakeFiles/tpArap.dir/src/Trackball.cpp.o: /home/louis/Documents/HAI911I-app-interactive/TP3/src/Trackball.cpp
+CMakeFiles/tpArap.dir/src/Trackball.cpp.o: /home/louis/Documents/HAI911I-app-interactive/TP4/src/Trackball.cpp
 CMakeFiles/tpArap.dir/src/Trackball.cpp.o: CMakeFiles/tpArap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/louis/Documents/HAI911I-app-interactive/TP3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tpArap.dir/src/Trackball.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tpArap.dir/src/Trackball.cpp.o -MF CMakeFiles/tpArap.dir/src/Trackball.cpp.o.d -o CMakeFiles/tpArap.dir/src/Trackball.cpp.o -c /home/louis/Documents/HAI911I-app-interactive/TP3/src/Trackball.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/louis/Documents/HAI911I-app-interactive/TP4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tpArap.dir/src/Trackball.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tpArap.dir/src/Trackball.cpp.o -MF CMakeFiles/tpArap.dir/src/Trackball.cpp.o.d -o CMakeFiles/tpArap.dir/src/Trackball.cpp.o -c /home/louis/Documents/HAI911I-app-interactive/TP4/src/Trackball.cpp
 
 CMakeFiles/tpArap.dir/src/Trackball.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tpArap.dir/src/Trackball.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Documents/HAI911I-app-interactive/TP3/src/Trackball.cpp > CMakeFiles/tpArap.dir/src/Trackball.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/louis/Documents/HAI911I-app-interactive/TP4/src/Trackball.cpp > CMakeFiles/tpArap.dir/src/Trackball.cpp.i
 
 CMakeFiles/tpArap.dir/src/Trackball.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tpArap.dir/src/Trackball.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Documents/HAI911I-app-interactive/TP3/src/Trackball.cpp -o CMakeFiles/tpArap.dir/src/Trackball.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/louis/Documents/HAI911I-app-interactive/TP4/src/Trackball.cpp -o CMakeFiles/tpArap.dir/src/Trackball.cpp.s
 
 # Object files for target tpArap
 tpArap_OBJECTS = \
@@ -146,9 +146,9 @@ tpArap: /usr/lib/librt.a
 tpArap: /usr/lib/libm.so
 tpArap: /usr/lib/libX11.so
 tpArap: CMakeFiles/tpArap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/louis/Documents/HAI911I-app-interactive/TP3/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable tpArap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/louis/Documents/HAI911I-app-interactive/TP4/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable tpArap"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tpArap.dir/link.txt --verbose=$(VERBOSE)
-	/usr/bin/cmake -E copy /home/louis/Documents/HAI911I-app-interactive/TP3/build/tpArap /home/louis/Documents/HAI911I-app-interactive/TP3
+	/usr/bin/cmake -E copy /home/louis/Documents/HAI911I-app-interactive/TP4/build/tpArap /home/louis/Documents/HAI911I-app-interactive/TP4
 
 # Rule to build all files generated by this target.
 CMakeFiles/tpArap.dir/build: tpArap
@@ -159,6 +159,6 @@ CMakeFiles/tpArap.dir/clean:
 .PHONY : CMakeFiles/tpArap.dir/clean
 
 CMakeFiles/tpArap.dir/depend:
-	cd /home/louis/Documents/HAI911I-app-interactive/TP3/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/louis/Documents/HAI911I-app-interactive/TP3 /home/louis/Documents/HAI911I-app-interactive/TP3 /home/louis/Documents/HAI911I-app-interactive/TP3/build /home/louis/Documents/HAI911I-app-interactive/TP3/build /home/louis/Documents/HAI911I-app-interactive/TP3/build/CMakeFiles/tpArap.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/louis/Documents/HAI911I-app-interactive/TP4/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/louis/Documents/HAI911I-app-interactive/TP4 /home/louis/Documents/HAI911I-app-interactive/TP4 /home/louis/Documents/HAI911I-app-interactive/TP4/build /home/louis/Documents/HAI911I-app-interactive/TP4/build /home/louis/Documents/HAI911I-app-interactive/TP4/build/CMakeFiles/tpArap.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/tpArap.dir/depend
 

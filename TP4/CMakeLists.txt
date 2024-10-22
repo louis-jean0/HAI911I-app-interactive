@@ -9,19 +9,23 @@ project(tpArap)
 
 add_executable(
   tpArap
- 	gmini.cpp
-	src/Camera.h
-	src/Camera.cpp
-	src/LaplacianWeights.h
-	src/linearSystem.h
-	src/Mesh.h
-	src/Mesh.cpp
-	src/RectangleSelectionTool.h
-	src/Scene.h
-	src/Trackball.cpp
-	src/Trackball.h
-	src/Vec3.h)
+  gmini.cpp
+  src/Camera.h
+  src/Camera.cpp
+  src/LaplacianWeights.h
+  src/linearSystem.h
+  src/Mesh.h
+  src/Mesh.cpp
+  src/RectangleSelectionTool.h
+  src/Scene.h
+  src/Trackball.cpp
+  src/Trackball.h
+  src/Vec3.h)
 
+# Inclure Eigen depuis le dossier local
+include_directories(extern/eigen3)
+
+# Ajouter glad et glfw comme dépendances
 add_subdirectory(extern/glad)
 target_link_libraries(${PROJECT_NAME} PRIVATE glad)
 
@@ -31,12 +35,10 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(extern/glfw)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
-
+# Lier avec les bibliothèques de l'OS
 target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_DL_LIBS})
 
+# Commande post-build pour copier l'exécutable
 add_custom_command(TARGET tpArap
   POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:tpArap> ${CMAKE_CURRENT_SOURCE_DIR})
-
-
-

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/louis/Documents/HAI911I-app-interactive/TP3/extern/glad/include -I/home/louis/Documents/HAI911I-app-interactive/TP3/extern/glfw/include
+CXX_INCLUDES = -I/home/louis/Documents/HAI911I-app-interactive/TP4/extern/eigen3 -I/home/louis/Documents/HAI911I-app-interactive/TP4/extern/glad/include -I/home/louis/Documents/HAI911I-app-interactive/TP4/extern/glfw/include
 
 CXX_FLAGS = -std=gnu++11
 

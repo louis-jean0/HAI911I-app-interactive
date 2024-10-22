@@ -14,6 +14,13 @@
 // purpose.
 // -------------------------------------------
 
+#include <Eigen/Core>
+#include <Eigen/Dense>
+#include <Eigen/Geometry>
+#include <Eigen/SVD>
+#include "Eigen/src/Core/Map.h"
+#include "Eigen/src/Core/Matrix.h"
+#include "glad/glad.h"
 #include "src/OpenGL.h"
 #include <GLFW/glfw3.h>
 
@@ -30,8 +37,6 @@
 #include "src/Mesh.h"
 #include "src/linearSystem.h"
 #include "src/LaplacianWeights.h"
-#include "extern/eigen3/Eigen/SVD"
-#include "extern/eigen3/Eigen/Geometry"
 
 using namespace std;
 
@@ -59,6 +64,9 @@ ViewerState viewerState;
 
 #include "src/RectangleSelectionTool.h"
 RectangleSelectionTool rectangleSelectionTool;
+
+#include "src/SphereSelectionTool.h"
+SphereSelectionTool sphereSelectionTool;
 
 
 // -------------------------------------------
@@ -155,7 +163,7 @@ void updateSystem() {
                 arapLinearSystem.A(equationIndex,v*3 + i) = -1;
                 arapLinearSystem.A(equationIndex++,vNeighbor*3 + i) = 1;
             }
-            
+
         }
     }
     for( unsigned int v = 0 ; v < mesh.V.size() ; ++v ) {
@@ -316,12 +324,12 @@ void rotateActiveHandle( Vec3 const & rotationAxis , double angle ) {
 
 
 //---------------------------------   YOU DO NOT NEED TO CHANGE THE FOLLOWING CODE  --------------------------------//
-void glVertex(Vec3 const & p) {
-    glVertex3f(p[0] , p[1] , p[2]);
-}
-void glNormal(Vec3 const & p) {
-    glNormal3f(p[0] , p[1] , p[2]);
-}
+// void glVertex(Vec3 const & p) {
+//     glVertex3f(p[0] , p[1] , p[2]);
+// }
+// void glNormal(Vec3 const & p) {
+//     glNormal3f(p[0] , p[1] , p[2]);
+// }
 
 bool activeHandleIsValid() {
     return activeHandle >= 0  &&  activeHandle < numberOfHandles;
@@ -349,7 +357,17 @@ Vec3 getViewVector() {
     return Vec3( modelview[2] , modelview[6] , modelview[10] );
 }
 
-
+void setTagForVerticesInSphere(bool tagToSet) {
+    unsigned int nVertsInside = 0;
+    for(unsigned int v = 0; v < mesh.V.size(); ++v) {
+        const Vec3& p = mesh.V[v].p;
+        if(sphereSelectionTool.contains(p)) {
+            verticesAreMarkedForCurrentHandle[v] = tagToSet;
+            ++nVertsInside;
+        }
+    }
+    std::cout << "nVertsInside = " << nVertsInside << std::endl;
+}
 
 void setTagForVerticesInRectangle( bool tagToSet ) {
     float modelview[16];  glGetFloatv(GL_MODELVIEW_MATRIX , modelview);
@@ -387,6 +405,7 @@ void addVerticesToCurrentHandle() {
         return;
 
     setTagForVerticesInRectangle( rectangleSelectionTool.isAdding );
+    setTagForVerticesInSphere(sphereSelectionTool.isAdding);
 }
 
 void finalizeEditingOfCurrentHandle() {
@@ -616,16 +635,13 @@ void render () {
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
     glDisable(GL_BLEND);
-    glColor3f(0.4,0.4,0.8);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     mesh.draw();
     drawHandles();
+    glColor3f(0.4,0.4,0.8);
     rectangleSelectionTool.draw();
+    sphereSelectionTool.draw();
 }
-
-
-
-
-
 
 // Executed each time a key is entered.
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods)
@@ -744,9 +760,30 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods
     }
 }
 
+Vec3 get3DPositionFromClick(float mouseX, float mouseY) {
+    GLint viewport[4];
+    GLdouble modelView[16], projection[16];
 
+    glGetIntegerv(GL_VIEWPORT, viewport);
+    glGetDoublev(GL_MODELVIEW_MATRIX, modelView);
+    glGetDoublev(GL_PROJECTION_MATRIX, projection);
 
+    float depth;
+    glReadPixels(mouseX, viewport[3] - mouseY, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &depth);
 
+    Eigen::Matrix4d modelViewMatrix = Eigen::Map<Eigen::Matrix4d>(modelView);
+    Eigen::Matrix4d projectionMatrix = Eigen::Map<Eigen::Matrix4d>(projection);
+    Eigen::Matrix4d invProjModelViewMatrix = (projectionMatrix * modelViewMatrix).inverse();
+    Eigen::Vector4d normalizedPos((2.0f * mouseX) / viewport[2] - 1.0f,  // x normalisé
+                      1.0f - (2.0f * mouseY) / viewport[3],  // y normalisé
+                      2.0f * depth - 1.0f,                   // profondeur normalisée
+                      1.0f);
+    Eigen::Vector4d worldPos = invProjModelViewMatrix * normalizedPos;
+    if (worldPos.w() != 0.0) {
+        worldPos /= worldPos.w();
+    }
+    return Vec3(worldPos.x(), worldPos.y(), worldPos.z());
+}
 
 // Called each time a mouse button is pressed
 void mouseButtonCallback(GLFWwindow *window, int button, int state, int mods)
@@ -773,6 +810,26 @@ void mouseButtonCallback(GLFWwindow *window, int button, int state, int mods)
                     rectangleSelectionTool.initRectangle(x,y);
                     rectangleSelectionTool.isAdding = false;
                     rectangleSelectionTool.isActive = true;
+                }
+            }
+        }
+    }
+    if(mods & GLFW_MOD_SHIFT || sphereSelectionTool.isActive) {
+        Vec3 clickPosInWorld = get3DPositionFromClick(x, y);
+        float xWorld = clickPosInWorld[0];
+        float yWorld = clickPosInWorld[1];
+        float zWorld = clickPosInWorld[2];
+        if(viewerState == ViewerState_EDITINGHANDLE) {
+            if(state == GLFW_RELEASE) {
+                sphereSelectionTool.isActive = false;
+                addVerticesToCurrentHandle();
+            }
+            else {
+                if (button == GLFW_MOUSE_BUTTON_LEFT) {
+                    sphereSelectionTool.initSphere(xWorld,yWorld,zWorld);
+                    std::cout<<"x : "<<x<<" y : "<<y<<std::endl;
+                    sphereSelectionTool.isAdding = true;
+                    sphereSelectionTool.isActive = true;
                 }
             }
         }
@@ -807,12 +864,6 @@ void mouseButtonCallback(GLFWwindow *window, int button, int state, int mods)
     }
 }
 
-
-
-
-
-
-
 // Called each time the mouse cursor moves
 void cursorPosCallback(GLFWwindow *window, double xpos, double ypos)
 {
@@ -820,7 +871,7 @@ void cursorPosCallback(GLFWwindow *window, double xpos, double ypos)
     glfwGetWindowSize(window, &width, &height);
     int x = xpos;
     int y = ypos;
-
+    
     if (! mouseIsPressed) {
         lastX = x;
         lastY = y;
@@ -829,6 +880,9 @@ void cursorPosCallback(GLFWwindow *window, double xpos, double ypos)
     if( viewerState == ViewerState_EDITINGHANDLE  &&  rectangleSelectionTool.isActive ) {
         rectangleSelectionTool.updateRectangle(x,y);
         std::cout << "rectangleSelectionTool.updateRectangle(" << x << " , " << y << ")" << std::endl;
+    }
+    else if(viewerState == ViewerState_EDITINGHANDLE && sphereSelectionTool.isActive) {
+        //std::cout<<"sphereSelectionTool.radius = "<<sphereSelectionTool.radius<<std::endl;
     }
     else {
         // moving the camera:
@@ -860,10 +914,17 @@ void windowSizeCallback(GLFWwindow *window, int width, int height)
     glViewport(0, 0, (GLint)width, (GLint)height); // Dimension of the rendering region in the window
 }
 
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
+    if (yoffset > 0) {
+        sphereSelectionTool.setRadius(sphereSelectionTool.radius + 0.1f);
+    } else if (yoffset < 0) {
+        sphereSelectionTool.setRadius(sphereSelectionTool.radius - 0.1f);
+    }
 
-
-
-
+    if (sphereSelectionTool.radius < 0.1f) {
+        sphereSelectionTool.setRadius(0.1f);
+    }
+}
 
 void initGLFW()
 {
@@ -900,6 +961,7 @@ void initGLFW()
     glfwSetKeyCallback(g_window, keyCallback);
     glfwSetCursorPosCallback(g_window, cursorPosCallback);
     glfwSetMouseButtonCallback(g_window, mouseButtonCallback);
+    glfwSetScrollCallback(g_window, scroll_callback);
 }
 
 

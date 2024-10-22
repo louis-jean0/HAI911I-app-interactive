@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/home/louis/Documents/HAI911I-app-interactive/TP3/extern/glfw/include -I/home/louis/Documents/HAI911I-app-interactive/TP3/extern/glfw/src -I/home/louis/Documents/HAI911I-app-interactive/TP3/build/extern/glfw/src
+C_INCLUDES = -I/home/louis/Documents/HAI911I-app-interactive/TP4/extern/eigen3 -I/home/louis/Documents/HAI911I-app-interactive/TP4/extern/glfw/include -I/home/louis/Documents/HAI911I-app-interactive/TP4/extern/glfw/src -I/home/louis/Documents/HAI911I-app-interactive/TP4/build/extern/glfw/src
 
 C_FLAGS = -std=gnu99 -fPIC -Wall
 
